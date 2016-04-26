@@ -10,7 +10,7 @@ class MoveCommand(Commands.Command.Command):
         self.commandname = "MOVE"
 
     def __init__(self):
-        self.commandname = "MOVE"
+        pass
 
     def validateinstruction(self, robot, table):
         if table.currentrobot == robot:

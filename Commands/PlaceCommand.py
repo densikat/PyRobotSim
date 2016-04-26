@@ -9,6 +9,7 @@ class PlaceCommand(Commands.Command.Command):
         self.width = None
         self.height = None
         self.direction = None
+        self.commandname = None
 
     def executeinstruction(self, robot, table):
         robot.width = self.width
@@ -17,26 +18,26 @@ class PlaceCommand(Commands.Command.Command):
         table.currentrobot = robot
 
     def initializecommand(self, command):
-        self.commandname = "PLACE"
 
-        ValidCommand = False
+
+        validcommand = False
 
         split = command.split(" ")
         args = split[1]
 
         pattern = re.compile("-?\d{1},-?\d{1},\w{4,5}")
 
-        if(pattern.match(args)):
+        if pattern.match(args):
             argsplit = args.split(',')
+            if len(argsplit) == 3:
+                if Direction.Direction.validatedirection(argsplit[2]):
+                    self.width = int(argsplit[0])
+                    self.height = int(argsplit[1])
+                    self.direction = Direction.Direction.getdirectionindex(argsplit[2])
+                    self.commandname = "PLACE"
+                    validcommand = True
 
-            if Direction.Direction.validatedirection(argsplit[2]):
-                self.width = int(argsplit[0])
-                self.height = int(argsplit[1])
-                self.direction = Direction.Direction.getdirectionindex(argsplit[2])
-
-                ValidCommand = True
-
-        return ValidCommand
+        return validcommand
 
 
     def validateinstruction(self, robot, table):

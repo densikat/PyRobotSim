@@ -4,7 +4,7 @@ import Robot, Table
 
 def processcommand(command):
     command = CommandFactory.CommandFactory.getclass(command)
-    if (command is not None):
+    if (command.commandname is not None):
         robot.executeinstruction(command, table)
 
 if __name__ == '__main__':
