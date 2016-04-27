@@ -12,5 +12,3 @@ class Table:
     @currentrobot.setter
     def currentrobot(self, robot):
         self._currentrobot = robot
-
-

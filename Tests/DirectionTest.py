@@ -11,11 +11,10 @@ class TestDirection(TestCase):
         self.assertFalse(Direction.Direction.validatedirection("NORTEH"))
 
     def test_getindexfromstring(self):
-        self.assertEquals(Direction.Direction.getdirectionindex("NORTH"),1)
+        self.assertEqual(Direction.Direction.getdirectionindex("NORTH"),1)
 
     def test_getstringfromindex(self):
-        self.assertEquals(Direction.Direction.getdirection(1),"NORTH")
-
+        self.assertEqual(Direction.Direction.getdirection(1),"NORTH")
 
 if __name__ == '__main__':
     unittest.main()
