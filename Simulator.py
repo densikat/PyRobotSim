@@ -1,20 +1,23 @@
-from Commands import CommandFactory,Command, MoveCommand
-import Robot, Table
+import Robot
+import Table
+from Commands import CommandFactory
 
 
 def processcommand(command):
     command = CommandFactory.CommandFactory.getclass(command)
-    if (command.commandname is not None):
-        robot.executeinstruction(command, table)
+    if command is not None:
+        if command.commandname is not None:
+            robot.executeinstruction(command, table)
+
+
+def runinteractive():
+    while True:
+        cmdinput = input("")
+        processcommand(cmdinput.upper())
 
 if __name__ == '__main__':
     table = Table.Table(4, 4)
     robot = Robot.Robot()
+    runinteractive()
 
-    processcommand("PLACE 1,1,EAST")
-    processcommand("MOVE")
-    processcommand("REPORT")
-    processcommand("LEFT")
-    processcommand("MOVE")
-    processcommand("REPORT")
 

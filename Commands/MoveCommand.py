@@ -1,7 +1,4 @@
-import abc
 import Commands
-from Commands import Command
-import Robot, Table
 
 
 class MoveCommand(Commands.Command.Command):
@@ -14,12 +11,13 @@ class MoveCommand(Commands.Command.Command):
 
     def validateinstruction(self, robot, table):
         if table.currentrobot == robot:
+            # If robot is facing north or south then get new vertical location
             if robot.direction == 1 or robot.direction == 3:
-                newylocation = robot.NewVerticalLocation()
+                newylocation = robot.newverticallocation()
                 if 0 <= newylocation <= table.height:
                     return True
             else:
-                newxlocation = robot.NewHorizontalLocation()
+                newxlocation = robot.newhorizontallocation()
                 if 0 <= newxlocation <= table.width:
                     return True
 
@@ -27,25 +25,29 @@ class MoveCommand(Commands.Command.Command):
 
     def executeinstruction(self, robot, table):
 
-        if robot.direction == 1:
+        if robot.direction == 1:  # North
             self.__north(robot)
-        elif robot.direction == 2:
+        elif robot.direction == 2:  # East
             self.__east(robot)
-        elif robot.direction == 3:
+        elif robot.direction == 3:  # South
             self.__south(robot)
-        elif robot.direction == 4:
+        elif robot.direction == 4:  # West
             self.__west(robot)
 
-    def __north(self, robot):
+    @staticmethod
+    def __north(robot):
         robot.height = robot.height + robot.movelength
 
-    def __south(self, robot):
+    @staticmethod
+    def __south(robot):
         robot.height = robot.height - robot.movelength
 
-    def __east(self, robot):
+    @staticmethod
+    def __east(robot):
         robot.width = robot.width + robot.movelength
 
-    def __west(self, robot):
+    @staticmethod
+    def __west(robot):
         robot.width = robot.width - robot.movelength
 
 

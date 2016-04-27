@@ -1,6 +1,3 @@
-from Commands import Command
-
-
 class Robot:
 
     __width = None
@@ -34,18 +31,17 @@ class Robot:
     def direction(self, direction):
         self._direction = direction
 
-    def NewHorizontalLocation(self):
+    def newhorizontallocation(self):
         if self.direction == 2:
             return self.width + self.movelength
         else:
             return self.width - self.movelength
 
-    def NewVerticalLocation(self):
+    def newverticallocation(self):
         if self.direction == 1:
             return self.height + self.movelength
         else:
             return self.height - self.movelength
-
 
     def executeinstruction(self, command, table):
         if command.validateinstruction(self, table):

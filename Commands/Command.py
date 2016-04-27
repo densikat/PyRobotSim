@@ -1,6 +1,4 @@
-from abc import ABC, ABCMeta, abstractmethod
-from Robot import Robot
-from Table import Table
+from abc import ABC, abstractmethod
 
 
 class Command(ABC):

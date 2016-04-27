@@ -16,6 +16,5 @@ class TestDirection(TestCase):
     def test_getstringfromindex(self):
         self.assertEquals(Direction.Direction.getdirection(1),"NORTH")
 
-
 if __name__ == '__main__':
     unittest.main()

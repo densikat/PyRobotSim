@@ -2,6 +2,7 @@ import unittest
 import Commands.PlaceCommand
 import Robot, Table
 
+
 class PlaceCommandTest(unittest.TestCase):
     def test_validplacestring(self):
         command = Commands.PlaceCommand.PlaceCommand()

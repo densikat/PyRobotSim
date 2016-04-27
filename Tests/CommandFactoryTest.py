@@ -1,6 +1,6 @@
 import unittest
 from unittest import TestCase
-from Commands import CommandFactory,Command, MoveCommand
+from Commands import CommandFactory, MoveCommand
 
 __author__ = 'David Ensikat'
 __project__ = 'PyRobotSim'

@@ -1,5 +1,4 @@
 import Commands
-from Commands import Command
 import Direction
 import re
 
@@ -19,7 +18,6 @@ class PlaceCommand(Commands.Command.Command):
 
     def initializecommand(self, command):
 
-
         validcommand = False
 
         split = command.split(" ")
@@ -29,6 +27,7 @@ class PlaceCommand(Commands.Command.Command):
 
         if pattern.match(args):
             argsplit = args.split(',')
+            # Make sure we have three arguments
             if len(argsplit) == 3:
                 if Direction.Direction.validatedirection(argsplit[2]):
                     self.width = int(argsplit[0])
@@ -38,7 +37,6 @@ class PlaceCommand(Commands.Command.Command):
                     validcommand = True
 
         return validcommand
-
 
     def validateinstruction(self, robot, table):
         returnval = False

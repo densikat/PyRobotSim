@@ -1,11 +1,12 @@
 import Commands
-from Commands import Command
+
 
 class LeftCommand(Commands.Command.Command):
     def __init__(self):
         pass
 
     def executeinstruction(self, robot, table):
+        # If robot is facing north, wrap around to West -> 4
         if robot.direction == 1:
             newdirection = 4
         else:
