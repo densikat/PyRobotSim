@@ -150,6 +150,8 @@ Does the following:
 ## Todo
 
 * Increase test coverage
+* Test on more version of Python 3
+* Add another method of inputting commands other than interactive
 
 ## License
 
