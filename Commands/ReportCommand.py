@@ -1,8 +1,8 @@
-import Commands
+from Commands import Command
 import Direction
 
 
-class ReportCommand(Commands.Command.Command):
+class ReportCommand(Command.Command):
     def __init__(self):
         pass
 

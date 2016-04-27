@@ -1,8 +1,8 @@
 import sys
-import Commands
+from Commands import Command
 
 
-class ExitCommand(Commands.Command.Command):
+class ExitCommand(Command.Command):
     def __init__(self):
         pass
 

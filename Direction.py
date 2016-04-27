@@ -1,5 +1,5 @@
 class Direction:
-    
+
     directions = {
         1: "NORTH",
         2: "EAST",

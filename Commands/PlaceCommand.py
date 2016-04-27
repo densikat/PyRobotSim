@@ -1,9 +1,9 @@
-import Commands
+from Commands import Command
 import Direction
 import re
 
 
-class PlaceCommand(Commands.Command.Command):
+class PlaceCommand(Command.Command):
     def __init__(self):
         self.width = None
         self.height = None

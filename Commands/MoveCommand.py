@@ -1,7 +1,7 @@
-import Commands
+from Commands import Command
 
 
-class MoveCommand(Commands.Command.Command):
+class MoveCommand(Command.Command):
 
     def initializecommand(self, command):
         self.commandname = "MOVE"

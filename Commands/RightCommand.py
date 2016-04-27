@@ -1,7 +1,7 @@
-import Commands
+from Commands import Command
 
 
-class RightCommand(Commands.Command.Command):
+class RightCommand(Command.Command):
     def __init__(self):
         pass
 
