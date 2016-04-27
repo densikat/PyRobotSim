@@ -1,51 +1,40 @@
-# Robot-Simulator
+# PyRobotSim
 
 Simulation of toy robot moving on a square tabletop
 
 A robot is placed on a 5x5 tabletop. Instructions are issued to the robot via user input or via a text input file
 
-## Demo
+This is a Python implementation of my initial Java based [Robot Simulator](https://github.com/densikat/Robot-Simulator)
 
-![DEMO](https://raw.githubusercontent.com/densikat/Robot-Simulator/develop/image/output.gif)
+I chose Python to get some experience with a dynamic language. For now this version only has an interactive mode.
 
 ## Environments
 
 Initially developed on
 
 * Windows 10
-* JRE 8 U73
-* Maven 3.3.9
+* Python 3.5.1 (Only tested on this version)
 
 ## System dependencies and configuration
 
-* JDK => 8U60
+* Python 3.5.1 or greater
 
 ## Successfully tested on following platforms
 
 * Windows 10
-* OS X El Capitan (10.11.4)
-* Ubuntu 15.10
 * Ubuntu 16.04
 
 ## Usage Instructions
 
-Load command prompt and change to working directory of robotsim class files
+Load command prompt/shell and change to working directory of robotsim class files
 
-To run application in interactive mode:
+To run application on Linux:
 
-java -jar jarfile
+	$ python3 Simulator.py
 
-_example._ 
+To run application on Windows (Python 3 location must be on PATH variable):
 
-	$ java -jar robotsim-0.0.1-SNAPSHOT.jar
-
-To run application from an input file:
-
-java -jar jarfile pathtoinputfile
-
-_example._ 
-
-	$ java -jar robotsim-0.0.1-SNAPSHOT.jar c:\temp\instructions.txt
+	$ python Simulator.py
 	
 ## Valid commands
 
@@ -86,53 +75,36 @@ _example_
 REPORT
 3,3,NORTH
 
-## Compiling from source
+#####EXIT
 
-Maven needs to be installed and working.
+**Purpose:** Exit the game
 
-1. Download source (via zip or clone repository)
-2. Browse to source root
-3. Run the following to compile from source
-
-    ```console
-	$ mvn compile
-	```
-
-## Creating executable jar
-
-1. Download source (via zip or clone repository)
-2. Browse to source root
-3. Run the following to compile and package from source
-
-    ```console
-	$ mvn package
-	```
 
 ## Running tests
 
 1. Browse to source root
-2. Run the following to execute tests
+2. Run the following to execute tests (Linux)
 
-    ```console
-	$ mvn test
+	```
+	$ python3 -m unittest Tests/*.py
 	```
 
 ## Structure
 
 Code is comprised of four main source files
 
-**Simulator.java**
+**Simulator.py**
 
-_Contains main method, runs the simulator_
+_Runs the simulator_
 
 Class does the following:
 
     Takes and checks command line arguments passed to the program
-    Runs in either interactive mode or batch (file) mode depending on command line arguments passed
-    Initializes robot and table
+	Initializes robot and table
+    Runs in interactive loop, takes commands from command line
     Takes each command sequentially and processes them
     
-**Robot.java**
+**Robot.py**
 
 _Class representation of a robot_
 
@@ -140,16 +112,8 @@ Does the following:
     
     Takes a command and validates it against a given table
     Executes a command against a given table
-    
-**Command.java**
 
-_Class representation of a command_
-
-Does the following:
-
-    Takes a command string, parses string, if valid populates command instance fields
-
-**TabletTop.java**
+**Table.py**
 
 _Class representation of Table Top_
 
@@ -157,7 +121,7 @@ Does the following:
 
     Initializes a table top with specific X and Y upper bounds
 
-**Direction.java**
+**Direction.py**
 
 _Direction class, uses hashtable internally to represent directions_
 
@@ -166,24 +130,26 @@ _This class was implemented to provide a way to arithmetically (via hashtable in
 Does the following:
 
     Returns string representation of direction based on hashtable index.
+    
+**Commands\Command.py**
 
-**Instruction.java**
-
-_Interface used to spawn instruction objects_
-
-_Move, Place, Report, Left, Right, Report instruction classes all spawn off this interface and provide these methods_
+_Class representation of a command, all command objects game are derived off this abstract class_
 
 Does the following:
 
-    Provides validation and execution methods for instruction
+    Takes a command string, parses string, if valid populates command instance fields
 
-**InstructionFactory.java**
+**Commands\CommandFactory.py**
 
-_Factory class used to dynamically generate instruction objects based on command text_
+_Factory class that produces command objects_
 
 Does the following:
 
-    Returns instruction object instances
+    Produces objects based on Command class. This is based on user input command from console.
+
+## Todo
+
+* Increase test coverage
 
 ## License
 
